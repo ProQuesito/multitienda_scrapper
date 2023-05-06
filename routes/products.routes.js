@@ -1,24 +1,19 @@
+// Rutas de la app
+
 const Router = require('@koa/router')
 
-const {createProduct, updateProduct, deleteProduct, getProduct, getProducts, deleteAllProducts} = require('../api/products.api')
+// Se importan las funciones de la api
 
-// define the prefix of the api
+const { createProduct, getProduct, getProducts, updateProduct, deleteProduct, deleteAllProducts } = require('../api/products.api')
+
+// define el prefijo de la api
 
 const router = new Router({
     prefix:'/products'
 })
 
-// get request
-router.get('/', async ctx => {
-    try{
-        ctx.body = await getProducts()
-    } catch (error){
-        console.error('Error al procesar solicitud GET', error)
-    }
-})
+// Ruta verbo POST (crear un producto)
 
-// post request to create a new product
- 
 router.post('/', async ctx => {
     try {
         console.log('Recibiendo solicitud POST:', ctx.request.body);
@@ -37,6 +32,8 @@ router.post('/', async ctx => {
     }
 })
 
+// Rut verbo GET (consultar por un producto mediante su id)
+
 router.get('/:id', async ctx => {
     try{
         const id = ctx.params.id
@@ -46,6 +43,27 @@ router.get('/:id', async ctx => {
     }
 })
 
+// Ruta verbo GET (consultar por todos los productos en la bd)
+router.get('/', async ctx => {
+    try{
+        ctx.body = await getProducts()
+    } catch (error){
+        console.error('Error al procesar solicitud GET', error)
+    }
+})
+
+// Ruta verbo PUT (modificar un producto mediante su id)
+
+router.put('/:id', async ctx => {
+    const id = ctx.params.id
+    let product = ctx.request.body
+    ack = await updateProduct(id, product)
+    ctx.response.status = 200
+    ctx.body = ack
+})
+
+
+// Ruta verbo DELETE (eliminar un producto mediante su id)
 
 router.delete('/:id', async ctx => {
     try{
@@ -57,17 +75,11 @@ router.delete('/:id', async ctx => {
     }
 })
 
+// Ruta verbo DELETE (eliminar todos los productos de la bd)
+
 router.delete('/', async ctx => {
     await deleteAllProducts()
     ctx.body = 'Se eliminaron todos los productos'
-})
-
-router.put('/:id', async ctx => {
-    const id = ctx.params.id
-    let product = ctx.request.body
-    ack = await updateProduct(id, product)
-    ctx.response.status = 200
-    ctx.body = ack
 })
 
 module.exports = router
