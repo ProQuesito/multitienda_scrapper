@@ -10,7 +10,11 @@ const router = new Router({
 
 // get request
 router.get('/', async ctx => {
-    ctx.body = await getProducts()
+    try{
+        ctx.body = await getProducts()
+    } catch (error){
+        console.error('Error al procesar solicitud GET', error)
+    }
 })
 
 // post request to create a new product
@@ -20,12 +24,12 @@ router.post('/', async ctx => {
         console.log('Recibiendo solicitud POST:', ctx.request.body);
 
         let product = ctx.request.body;
-        product = await createProduct(product);
+        productId = await createProduct(product);
 
-        console.log('Producto creado:', product);
+        console.log('Producto creado:', productId);
 
         ctx.response.status = 200;
-        ctx.body = product;
+        ctx.body = productId;
     } catch (error) {
         console.error('Error al procesar solicitud POST:', error);
         ctx.response.status = 500;
@@ -34,8 +38,12 @@ router.post('/', async ctx => {
 })
 
 router.get('/:id', async ctx => {
-    const id = ctx.params.id
-    ctx.body = await getProduct(id)
+    try{
+        const id = ctx.params.id
+        ctx.body = await getProduct(id)
+    } catch (error) {
+        console.error('Error al procesar solicitud GET:', error);
+    }
 })
 
 

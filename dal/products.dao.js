@@ -11,12 +11,12 @@ const save = async({nombre, descripcion, precio, marca, pagina}) => {
 // Leer todos los productos que estan en la base de datos de mongodb
 const getAll = async () => {
     const cursor = await products.find()
-    return cursor. toArray()
+    return cursor.toArray()
 }
 
 // Leer un producto en particular
 const getById = async (id) => {
-    return await products.findOne({_id:objectId()})
+    return await products.findOne({_id:new objectId(id)})
 }
 
 // actualizar un producto en particular
