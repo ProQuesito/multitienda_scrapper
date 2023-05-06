@@ -28,7 +28,7 @@ const update = async (id, {nombre, descripcion, precio, marca, pagina}) => {
 
 // Eliminar un producto usando su id
 const removeById = async id => {
-    await products.deleteOne({_id:objectId(id)})
+    await products.deleteOne({_id:new objectId(id)})
 }
 
 // Eliminar todos los productos

@@ -48,8 +48,13 @@ router.get('/:id', async ctx => {
 
 
 router.delete('/:id', async ctx => {
-    const id = ctx.params.id
-    await deleteProduct(id)
+    try{
+        const id = ctx.params.id
+        await deleteProduct(id)
+        ctx.body = 'Se eliminó correctamente'
+    } catch (error) {
+        console.error('Error al procesar solicitud DELETE:', error);
+    }
 })
 
 router.delete('/', async ctx => {
