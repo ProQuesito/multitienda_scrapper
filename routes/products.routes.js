@@ -60,9 +60,9 @@ router.delete('/', async ctx => {
 router.put('/:id', async ctx => {
     const id = ctx.params.id
     let product = ctx.request.body
-    product = await updateProduct(id, product)
+    ack = await updateProduct(id, product)
     ctx.response.status = 200
-    ctx.body = product
+    ctx.body = ack
 })
 
 module.exports = router

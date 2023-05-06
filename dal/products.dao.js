@@ -20,10 +20,10 @@ const getById = async (id) => {
 }
 
 // actualizar un producto en particular
-const update = async(id, {nombre, descripcion, precio, marca, pagina}) => {
-    const result = await products.replaceOne({_id:objectId(id, {nombre, descripcion, precio, marca, pagina})})
-
-    return result.ops[0]
+const update = async (id, {nombre, descripcion, precio, marca, pagina}) => {
+    const result = await products.replaceOne({_id:new objectId(id)}, {nombre, descripcion, precio, marca, pagina})
+    console.log(result)
+    return result.acknowledged
 }
 
 // Eliminar un producto usando su id
