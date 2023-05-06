@@ -1,6 +1,6 @@
 const Router = require('@koa/router')
 
-const {createProduct, updateProduct, deleteProduct, getProduct, getProducts} = require('../api/products.api')
+const {createProduct, updateProduct, deleteProduct, getProduct, getProducts, deleteAllProducts} = require('../api/products.api')
 
 // define the prefix of the api
 
@@ -50,6 +50,11 @@ router.get('/:id', async ctx => {
 router.delete('/:id', async ctx => {
     const id = ctx.params.id
     await deleteProduct(id)
+})
+
+router.delete('/', async ctx => {
+    await deleteAllProducts()
+    ctx.body = 'Se eliminaron todos los productos'
 })
 
 router.put('/:id', async ctx => {

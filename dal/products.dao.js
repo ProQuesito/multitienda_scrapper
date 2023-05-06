@@ -31,4 +31,9 @@ const removeById = async id => {
     await products.deleteOne({_id:objectId(id)})
 }
 
-module.exports = {getAll, getById, removeById,save,update}
+// Eliminar todos los productos
+const removeAll = async () => {
+    await products.deleteMany()
+}
+
+module.exports = {getAll, getById, removeById,save,update, removeAll}

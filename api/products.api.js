@@ -1,4 +1,4 @@
-const {getAll, getById,removeById,save,update} = require('../dal/products.dao')
+const {getAll, getById,removeById,save,update,removeAll} = require('../dal/products.dao')
 
 // map de save() method /post request
 const createProduct = async({nombre, descripcion, precio, marca, pagina}) => {
@@ -24,6 +24,9 @@ const getProduct = async id => {
 const deleteProduct = async id => {
     return await removeById(id)
 }
+const deleteAllProducts = async id => {
+    return await removeAll()
+}
 
 // Map update()
 
@@ -36,5 +39,6 @@ module.exports = {
     getProduct,
     getProducts,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    deleteAllProducts
 }
