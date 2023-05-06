@@ -4,17 +4,13 @@ const objectId = require('mongodb').ObjectId
 
 // aqui va el codigo que guardara nuevos productos
 const save = async({nombre, descripcion, precio, marca, pagina}) => {
-    console.log({nombre, descripcion, precio, marca, pagina})
     const result =  await products.insertOne({nombre, descripcion, precio, marca, pagina})
-    console.log({nombre, descripcion, precio, marca, pagina})
-    console.log(result)
-    return result.ops[0]
+    return result.insertedId
 }
 
 // Leer todos los productos que estan en la base de datos de mongodb
 const getAll = async () => {
     const cursor = await products.find()
-
     return cursor. toArray()
 }
 
