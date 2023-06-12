@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@android:color/black"
-            tools:text="Product Name" />
+            tools:text="Nombre del Producto" />
 
         <TextView
             android:id="@+id/descriptionTextView"

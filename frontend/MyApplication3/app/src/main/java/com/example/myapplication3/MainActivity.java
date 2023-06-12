@@ -1,6 +1,8 @@
 package com.example.myapplication3;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Crear la lista de productos
         productList = new ArrayList<>();
-        productList.add(new Product("Producto 1", "Descripción del Producto 1", R.drawable.zapa1));
-        productList.add(new Product("Producto 2", "Descripción del Producto 2", R.drawable.zapa2));
-        productList.add(new Product("Producto 3", "Descripción del Producto 3", R.drawable.zapa3));
-        productList.add(new Product("Producto 4", "Zapatillas para correr en todo terreno", R.drawable.zapa4));
-        productList.add(new Product("Producto 5", "Zapatillas que te harán ser la estrella de la fiesta", R.drawable.zapa5));
-        productList.add(new Product("Producto 6", "Zapatillas perfectas para tener el mayor agarre en la cancha ", R.drawable.zapa6));
-        productList.add(new Product("Producto 7", "Zapatillas impermeables perfectas para este invierno", R.drawable.zapa7));
+        productList.add(new Product("Zapatillas New Balance 696", "Silueta de running clásica.", R.drawable.zapa1));
+        productList.add(new Product("Zapatillas Nike court vision", "El estilo fastbreak del básquetbol de los 80", R.drawable.zapa2));
+        productList.add(new Product("Zapatillas nike ", "Aumenta la intensidad con el Nike Court Legacy. ", R.drawable.zapa3));
+        productList.add(new Product("Zapatillas DC", "Zapatillas para correr en todo terreno", R.drawable.tilla1));
+        productList.add(new Product("Zapatillas DC", "Zapatillas que te harán ser la estrella de la fiesta", R.drawable.tilla2));
+        productList.add(new Product("Zapatillas Adidas original", "Zapatillas perfectas para tener el mayor agarre en la cancha ", R.drawable.tilla3));
+        productList.add(new Product("Zapatillas Adidas original", "Zapatillas impermeables perfectas para este invierno", R.drawable.tilla4));
         // Agrega más productos según necesites
 
         // Crear el adaptador y asignarlo al RecyclerView
@@ -39,5 +41,12 @@ public class MainActivity extends AppCompatActivity {
         // Configurar el RecyclerView con un LinearLayoutManager
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+
     }
+    public void irAZapatilla (View view){
+
+        Intent i = new Intent(this, DetailActivity.class);
+        startActivity(i);
+    }
+
 }

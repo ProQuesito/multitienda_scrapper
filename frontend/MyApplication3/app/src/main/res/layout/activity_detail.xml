@@ -23,7 +23,7 @@
         android:layout_marginTop="16dp"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="@android:color/black"
-        tools:text="Product Name" />
+        tools:text="Nombre del producto " />
 
     <TextView
         android:id="@+id/descriptionTextView"
@@ -31,6 +31,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textColor="@android:color/black"
-        tools:text="Product Description" />
+        tools:text="Descripción del producto" />
 
 </LinearLayout>
